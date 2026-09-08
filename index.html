@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Filter Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">⚡</div>
+                <h1>Zenith</h1>
+            </div>
+
+            <div class="nav-section">
+                <h3>Views</h3>
+                <ul>
+                    <li class="nav-item active" data-filter="all">
+                        <span class="icon">📋</span> All Tasks
+                        <span class="badge" id="count-all">0</span>
+                    </li>
+                    <li class="nav-item" data-filter="active">
+                        <span class="icon">⏳</span> Active
+                        <span class="badge" id="count-active">0</span>
+                    </li>
+                    <li class="nav-item" data-filter="completed">
+                        <span class="icon">✅</span> Completed
+                        <span class="badge" id="count-completed">0</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h3>Categories</h3>
+                <ul id="category-list">
+                    <li class="nav-item" data-category="Work">
+                        <span class="icon">💼</span> Work
+                    </li>
+                    <li class="nav-item" data-category="Personal">
+                        <span class="icon">🏠</span> Personal
+                    </li>
+                    <li class="nav-item" data-category="Shopping">
+                        <span class="icon">🛒</span> Shopping
+                    </li>
+                    <li class="nav-item" data-category="Ideas">
+                        <span class="icon">💡</span> Ideas
+                    </li>
+                </ul>
+            </div>
+
+            <div class="storage-actions">
+                <button id="clear-completed-btn" class="btn-secondary">Clear Completed</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Search tasks...">
+                </div>
+                <div class="user-profile">
+                    <span class="date-display" id="current-date"></span>
+                    <div class="avatar">ZN</div>
+                </div>
+            </header>
+
+            <section class="task-input-section">
+                <form id="task-form">
+                    <div class="input-row">
+                        <input type="text" id="task-title" placeholder="What needs to be done?" required autocomplete="off">
+                        <select id="task-category">
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Ideas">Ideas</option>
+                        </select>
+                        <select id="task-priority">
+                            <option value="low">Low Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="high">High Priority</option>
+                        </select>
+                        <input type="date" id="task-duedate">
+                        <button type="submit" class="btn-primary">Add Task</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tasks-container">
+                <div class="section-header">
+                    <h2 id="active-view-title">All Tasks</h2>
+                    <div class="sort-options">
+                        <label for="sort-select">Sort by:</label>
+                        <select id="sort-select">
+                            <option value="date-added">Date Added</option>
+                            <option value="due-date">Due Date</option>
+                            <option value="priority">Priority</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="tasks-list" class="tasks-list">
+                    <!-- Dynamic tasks inserted here -->
+                </div>
+
+                <div id="empty-state" class="empty-state hidden">
+                    <div class="empty-icon">🎉</div>
+                    <h3>No tasks found</h3>
+                    <p>You're all caught up! Enjoy your free time or add a new task above.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
